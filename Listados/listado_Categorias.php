@@ -46,7 +46,7 @@
 
                     }
                 } else {
-                    echo "Error al ejecutar la consulta" . $conexxion->error;
+                    echo "Error al ejecutar la consulta" . $conexxion-> error;
                 }
 
 
@@ -59,7 +59,10 @@
 
     </div>
 
-    <div class="contaier">Agregar Categoria</div>
+    <div class="contaier">
+                <a href="../Insertar_Datos/AgregarFromCategorias.php">Agregar Categoria</a>
+
+    </div>
 
 
 

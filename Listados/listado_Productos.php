@@ -65,7 +65,7 @@
     </div>
 
     <div class="container">
-        <a href="">Agregar Productos</a>
+        <a href="../Insertar_Datos/AgregarFromProductos.php">Agregar Productos</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
