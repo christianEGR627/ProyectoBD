@@ -1,0 +1,280 @@
+base de datos Vieto del norte
+
+CREATE DATABASE IF NOT EXISTS Viento_del_Norte;
+USE Viento_del_Norte;
+
+DROP TABLE IF EXISTS DetallesPedido;
+DROP TABLE IF EXISTS Pedidos;
+DROP TABLE IF EXISTS Productos;
+DROP TABLE IF EXISTS Categorias;
+DROP TABLE IF EXISTS Clientes;
+DROP TABLE IF EXISTS Empleados;
+DROP TABLE IF EXISTS Transportistas;
+DROP TABLE IF EXISTS Proveedores;
+
+START TRANSACTION;
+
+CREATE TABLE Categorias
+(      
+    CategoriaID INTEGER PRIMARY KEY AUTO_INCREMENT,
+    NombreCategoria VARCHAR(25),
+    Descripcion VARCHAR(255)
+);
+
+CREATE TABLE Clientes
+(      
+    ClienteID INTEGER PRIMARY KEY AUTO_INCREMENT,
+    NombreCliente VARCHAR(50),
+    NombreContacto VARCHAR(50),
+    Direccion VARCHAR(50),
+    Ciudad VARCHAR(20),
+    CodigoPostal VARCHAR(10),
+    Pais VARCHAR(15)
+);
+
+CREATE TABLE Empleados
+(
+    EmpleadoID INTEGER PRIMARY KEY AUTO_INCREMENT,
+    Apellido VARCHAR(15),
+    Nombre VARCHAR(15),
+    FechaNacimiento DATETIME,
+    Foto VARCHAR(25),
+    Notas VARCHAR(1024)
+);
+
+CREATE TABLE Transportistas(
+    TransportistaID INTEGER PRIMARY KEY AUTO_INCREMENT,
+    NombreTransportista VARCHAR(25),
+    Telefono VARCHAR(15)
+);
+
+CREATE TABLE Proveedores(
+    ProveedorID INTEGER PRIMARY KEY AUTO_INCREMENT,
+    NombreProveedor VARCHAR(50),
+    NombreContacto VARCHAR(50),
+    Direccion VARCHAR(50),
+    Ciudad VARCHAR(20),
+    CodigoPostal VARCHAR(10),
+    Pais VARCHAR(15),
+    Telefono VARCHAR(15)
+);
+
+CREATE TABLE Productos(
+    ProductoID INTEGER PRIMARY KEY AUTO_INCREMENT,
+    NombreProducto VARCHAR(50),
+    ProveedorID INTEGER,
+    CategoriaID INTEGER,
+    Unidad VARCHAR(25),
+    Precio decimal(10,2),
+	FOREIGN KEY (CategoriaID) REFERENCES Categorias (CategoriaID),
+	FOREIGN KEY (ProveedorID) REFERENCES Proveedores (ProveedorID)
+);
+
+CREATE TABLE Pedidos(
+    PedidoID INTEGER PRIMARY KEY AUTO_INCREMENT,
+    ClienteID INTEGER,
+    EmpleadoID INTEGER,
+    FechaPedido DATETIME,
+    TransportistaID INTEGER,
+    FOREIGN KEY (EmpleadoID) REFERENCES Empleados (EmpleadoID),
+    FOREIGN KEY (ClienteID) REFERENCES Clientes (ClienteID),
+    FOREIGN KEY (TransportistaID) REFERENCES Transportistas (TransportistaID)
+);
+
+CREATE TABLE DetallesPedido(
+    DetallePedidoID INTEGER PRIMARY KEY AUTO_INCREMENT,
+    PedidoID INTEGER,
+    ProductoID INTEGER,
+    Cantidad INTEGER,
+	FOREIGN KEY (PedidoID) REFERENCES Pedidos (PedidoID),
+	FOREIGN KEY (ProductoID) REFERENCES Productos (ProductoID)
+);
+
+COMMIT;
+
+-- CATEGORIAS 
+INSERT INTO Categorias (NombreCategoria, Descripcion) VALUES
+('Lácteos', 'Quesos, cremas y productos derivados de la leche'),
+('Tortillas y Masas', 'Masa para tortillas, tamales y antojitos'),
+('Salsas y Condimentos', 'Salsas tradicionales y especias'),
+('Carnes Frías', 'Chorizo, jamón y embutidos'),
+('Panadería', 'Pan tradicional y dulce'),
+('Botanas', 'Papas, cacahuates y frituras'),
+('Café y Té', 'Café de grano y tés aromáticos'),
+('Licores', 'Bebidas alcohólicas tradicionales'),
+('Artesanías', 'Productos hechos a mano'),
+('Limpieza', 'Productos de limpieza del hogar');
+
+-- PROVEEDORES 
+INSERT INTO Proveedores (NombreProveedor, NombreContacto, Direccion, Ciudad, CodigoPostal, Pais, Telefono) VALUES
+('Mole Doña María', 'Ana Beltrán', 'Calle Independencia 78', 'Puebla', '72000', 'México', '222-345-6789'),
+('Quesos San Carlos', 'Carlos Ruiz', 'Carretera a León 45', 'Guanajuato', '36250', 'México', '473-112-2334'),
+('Café de Chiapas', 'María López', 'Av. Central 560', 'Tuxtla Gutiérrez', '29000', 'México', '961-445-5667'),
+('Tortillas La Abuelita', 'Rosario Méndez', 'Callejón del Beso 8', 'Guanajuato', '36000', 'México', '473-778-8990'),
+('Artisan Mexican Crafts', 'Luisa Fernández', 'Av. Tulum 205', 'Cancún', '77500', 'México', '998-112-2334'),
+('Cervecería Colima', 'Jorge Ríos', 'Blvd. Costero 1200', 'Manzanillo', '28200', 'México', '314-445-5667'),
+('Dulces Yucatecos', 'Sofía Pech', 'Calle 60 #405', 'Mérida', '97000', 'México', '999-778-8990'),
+('Aceites La Esperanza', 'Roberto Navarro', 'Av. Industrial 789', 'Monterrey', '64000', 'México', '81-1122-3344');
+
+-- PRODUCTOS 
+INSERT INTO Productos(NombreProducto, ProveedorID, CategoriaID, Unidad, Precio) VALUES
+('Mole poblano en pasta', 5, 4, 'Frasco 500g', 89.90),
+('Queso fresco ranchero', 6, 1, 'Pieza 1kg', 125.00),
+('Café tostado Chiapas', 7, 8, 'Bolsa 500g', 145.50),
+('Tortillas de maíz hechas a mano', 8, 2, 'Paquete 1kg', 28.00),
+('Mezcal artesanal espadín', 1, 9, 'Botella 750ml', 450.00),
+('Alebrijes de madera pintados', 2, 10, 'Pieza mediana', 350.00),
+('Chorizo verde toluqueño', 6, 5, 'Paquete 500g', 78.90),
+('Pan de muerto tradicional', 3, 6, 'Pieza grande', 65.00),
+('Salsa habanero yachi', 5, 4, 'Frasco 250g', 45.00),
+('Tequila reposado 100% agave', 4, 9, 'Botella 1L', 320.00),
+('Cacahuates enchilados', 4, 7, 'Bolsa 200g', 25.50),
+('Atole de vainilla en polvo', 5, 2, 'Bolsa 400g', 32.75),
+('Aceite de aguacate premium', 6, 4, 'Botella 500ml', 180.00),
+('Tamales oaxaqueños surtidos', 8, 2, 'Paquete 6 piezas', 85.00),
+('Jamaica natural deshidratada', 5, 4, 'Bolsa 250g', 42.30),
+('Artesanía de barro negro', 7, 10, 'Juego de 3 piezas', 275.00),
+('Crema ácida estilo casero', 6, 1, 'Frasco 400g', 38.50),
+('Cajeta quemada de Celaya', 1, 3, 'Frasco 380g', 68.00),
+('Mix de chiles secos', 5, 4, 'Bolsa 150g', 29.90),
+('Palomitas naturales', 4, 7, 'Bolsa 1kg', 55.00);
+
+-- CLIENTES 
+INSERT INTO Clientes(NombreCliente, NombreContacto, Direccion, Ciudad, CodigoPostal, Pais) VALUES
+('Restaurante El Cardenal', 'Fernando Gutiérrez', 'Calle Palma 23', 'CDMX', '06000', 'México'),
+('Tienda La Esquina', 'Carmen Rojas', 'Av. Hidalgo 456', 'Querétaro', '76000', 'México'),
+('Hotel Mayaland', 'Roberto Castillo', 'Carretera Mérida-Cancún Km 45', 'Yucatán', '97751', 'México'),
+('Cafetería El Jarocho', 'Lucía Méndez', 'Av. Universidad 780', 'Veracruz', '91700', 'México'),
+('Mercado de San Juan', 'Javier Ortega', 'Calle Ernesto Pugibet 21', 'CDMX', '06050', 'México'),
+('Tianguis Cultural del Chopo', 'Alejandra Núñez', 'Calle Aldama 211', 'CDMX', '06470', 'México'),
+('Supermercados Chedraui', 'Luis Ángel Pérez', 'Plaza Las Américas', 'Xalapa', '91194', 'México'),
+('Tienda de Conveniencia OXXO', 'Marco Sánchez', 'Blvd. Benito Juárez 2345', 'Tijuana', '22000', 'México'),
+('Casa de Eventos Hacienda', 'Patricia Morales', 'Carretera a Dolores 12', 'San Miguel', '37700', 'México'),
+('Comedor Industrial Santa Fe', 'Ricardo Chávez', 'Av. Vasco de Quiroga 3800', 'CDMX', '01219', 'México'),
+('Escuela Gastronómica Mexicana', 'Chef Alonso', 'Calle Saburit 45', 'Puebla', '72530', 'México'),
+('Tienda de Vinos La Europea', 'Sara Cortés', 'Av. Patriotismo 45', 'CDMX', '03810', 'México'),
+('Abarrotes Don Ramón', 'Ramón Valdez', 'Callejón del Diablo 67', 'Guadalajara', '44100', 'México'),
+('Hotel Boutique Azul', 'Mariana Cruz', 'Callejón de la Luz 3', 'Oaxaca', '68000', 'México'),
+('Cafetería El Moro', 'Diego Jiménez', 'Eje Central Lázaro Cárdenas 42', 'CDMX', '06000', 'México');
+
+-- EMPLEADOS 
+INSERT INTO Empleados(Apellido, Nombre, FechaNacimiento, Foto, Notas) VALUES
+('Hernández', 'Gabriela', '1988-03-12', 'gaby.jpg', 'Gerente de ventas'),
+('Torres', 'Oscar', '1995-11-25', 'oscar.jpg', 'Almacenista'),
+('Vargas', 'Isabel', '1992-07-18', 'isa.jpg', 'Atención a proveedores'),
+('Castro', 'Rodrigo', '1980-09-05', 'rodrigo.jpg', 'Logística'),
+('Morales', 'Adriana', '1998-02-28', 'adri.jpg', 'Atención telefónica'),
+('Jiménez', 'Pablo', '1993-12-15', 'pablo.jpg', 'Soporte técnico');
+
+-- TRANSPORTISTAS 
+INSERT INTO Transportistas(NombreTransportista, Telefono) VALUES
+('FedEx México', '800-900-3339'),
+('Paquetexpress', '55-2456-7890'),
+('Estrella Blanca', '800-507-5500'),
+('RedPack', '800-013-3333'),
+('UPS México', '800-902-7700');
+
+-- PEDIDOS 
+INSERT INTO Pedidos(ClienteID, EmpleadoID, FechaPedido, TransportistaID) VALUES
+(5, 3, '2024-01-05', 2),
+(2, 2, '2024-01-07', 1),
+(8, 4, '2024-01-09', 3),
+(12, 1, '2024-01-12', 4),
+(3, 3, '2024-01-15', 5),
+(7, 2, '2024-01-18', 2),
+(15, 4, '2024-01-20', 1),
+(4, 1, '2024-01-22', 3),
+(11, 3, '2024-01-25', 4),
+(6, 2, '2024-01-28', 5),
+(9, 4, '2024-02-01', 2),
+(13, 1, '2024-02-03', 1),
+(10, 3, '2024-02-06', 3),
+(14, 2, '2024-02-09', 4),
+(1, 4, '2024-02-12', 5),
+(5, 1, '2024-02-15', 2),
+(2, 3, '2024-02-18', 1),
+(8, 2, '2024-02-20', 3),
+(12, 4, '2024-02-23', 4),
+(3, 1, '2024-02-25', 5),
+(7, 3, '2024-02-28', 2),
+(15, 2, '2024-03-01', 1),
+(4, 4, '2024-03-04', 3),
+(11, 1, '2024-03-07', 4),
+(6, 3, '2024-03-10', 5),
+(9, 2, '2024-03-13', 2),
+(13, 4, '2024-03-16', 1),
+(10, 1, '2024-03-19', 3),
+(14, 3, '2024-03-22', 4),
+(1, 2, '2024-03-25', 5);
+
+-- DETALLES_PEDIDO 
+INSERT INTO DetallesPedido(PedidoID, ProductoID, Cantidad) VALUES
+(1, 5, 2), (1, 12, 5), (1, 8, 3),
+(2, 3, 4), (2, 17, 2),
+(3, 11, 10), (3, 19, 5),
+(4, 7, 3), (4, 15, 2), (4, 9, 4),
+(5, 2, 6), (5, 14, 2),
+(6, 6, 1), (6, 13, 3),
+(7, 10, 4), (7, 18, 2),
+(8, 4, 8), (8, 16, 1),
+(9, 1, 3), (9, 20, 5),
+(10, 5, 2), (10, 12, 4),
+(11, 7, 3), (11, 9, 2), (11, 15, 3),
+(12, 18, 6), (12, 3, 2),
+(13, 14, 4), (13, 6, 1),
+(14, 11, 5), (14, 19, 3),
+(15, 8, 10), (15, 17, 4),
+(16, 2, 5), (16, 10, 2),
+(17, 13, 3), (17, 5, 4),
+(18, 16, 2), (18, 7, 3),
+(19, 4, 6), (19, 12, 4),
+(20, 9, 5), (20, 15, 2),
+(21, 1, 3), (21, 18, 4),
+(22, 3, 6), (22, 14, 2),
+(23, 6, 1), (23, 11, 5),
+(24, 19, 3), (24, 8, 4),
+(25, 17, 2), (25, 5, 3),
+(26, 10, 4), (26, 2, 2),
+(27, 15, 5), (27, 7, 3),
+(28, 12, 6), (28, 16, 1),
+(29, 9, 4), (29, 13, 2),
+(30, 4, 8), (30, 20, 5);
+
+describe categorias;
+describe clientes;
+describe detallespedido;
+describe empleados;
+describe pedidos;
+describe productos;
+describe proveedores;
+describe transportistas;
+
+show tables;
+
+-- Listado de las tablas
+SELECT TABLE_NAME, TABLE_COMMENT 
+FROM INFORMATION_SCHEMA.TABLES 
+WHERE TABLE_SCHEMA = 'viento_del_norte';
+
+-- Detalles de las columnas de las tablas
+SELECT 
+  COLUMN_NAME AS 'Campo',
+  DATA_TYPE AS 'Tipo de dato',
+  CHARACTER_MAXIMUM_LENGTH AS 'Longitud',
+  IS_NULLABLE AS 'Permite NULL',
+  COLUMN_KEY AS 'Restricciones',
+  COLUMN_COMMENT AS 'Descripción'
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME = 'transportistas' 
+  AND TABLE_SCHEMA = 'viento_del_norte';
+  
+  -- obtener llaver foraneas
+  SELECT 
+  TABLE_NAME,
+  COLUMN_NAME,
+  CONSTRAINT_NAME,
+  REFERENCED_TABLE_NAME,
+  REFERENCED_COLUMN_NAME
+FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE 
+WHERE TABLE_SCHEMA = 'viento_del_norte' 
+  AND REFERENCED_TABLE_NAME IS NOT NULL;
