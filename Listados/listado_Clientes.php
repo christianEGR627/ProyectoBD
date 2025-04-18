@@ -60,7 +60,7 @@
             </tbody>
         </table>
         <div class="container">
-            <a href="" class="btn btn-success">Agregar Cliente</a>
+            <a href="../Insertar_Datos/AgregarFormClientes.php" class="btn btn-success">Agregar Cliente</a>
 
 
         </div>

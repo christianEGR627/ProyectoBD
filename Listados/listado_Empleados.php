@@ -72,7 +72,7 @@
         </table>
         <div class="container">
 
-        <a href="" class="btn btn-success">Agregar Empleado</a>
+        <a href="../Insertar_Datos/AgregarFormEmpleados.php" class="btn btn-success">Agregar Empleado</a>
         </div>
 
 

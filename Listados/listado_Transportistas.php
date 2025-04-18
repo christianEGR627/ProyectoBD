@@ -63,7 +63,7 @@
             </tbody>
         </table>
         <div class="container">
-            <a href="" class="btn btn-success">Agregar Transportista</a>
+            <a href="../Insertar_Datos/AgregarFormTransportistas.php" class="btn btn-success">Agregar Transportista</a>
         </div>
 
 

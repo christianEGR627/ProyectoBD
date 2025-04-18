@@ -84,7 +84,7 @@
             </tbody>
         </table>
         <div class="container">
-        <a href="" class="btn btn-success"> Agregar Pedido</a>
+        <a href="../Insertar_Datos/AgregarFormPedidos.php" class="btn btn-success"> Agregar Pedido</a>
         </div>
 
 
