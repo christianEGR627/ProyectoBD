@@ -56,8 +56,8 @@
                         <th scope="row"><?php echo $resultado['FechaPedido'] ?></th>
                         <th scope="row"><?php echo $resultado['NombreTransportista'] ?></th>
                         <th>
-                            <a href="" class="btn btn-warning">Editar</a>
-                          <!--  <a href="" class="btn btn-danger">Eliminar</a>-->
+                        <a href="../Editar_Datos/EditarFormPedidos.php?PedidoID=<?php echo $resultado['PedidoID']?>" class="btn btn-warning">Editar</a>
+                        <!--  <a href="" class="btn btn-danger">Eliminar</a>-->
                         </th>
 
 

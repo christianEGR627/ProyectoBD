@@ -45,8 +45,8 @@
                         <th scope="row"><?php echo $resultado['Foto']?></th>
                         <th scope="row"><?php echo $resultado['Notas']?></th>
                         <th>
-                            <a href=""class="btn btn-warning">Editar</a>
-                            <a href=""class="btn btn-danger">Eliminar</a>
+                        <a href="../Editar_Datos/EditarFormEmpleados.php?EmpleadoID=<?php echo $resultado['EmpleadoID']; ?>" class="btn btn-warning">Editar</a>
+                        <a href=""class="btn btn-danger">Eliminar</a>
                         </th>
                 
 
