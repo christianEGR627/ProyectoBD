@@ -60,7 +60,7 @@
     </div>
 
     <div class="contaier">
-                <a href="../Insertar_Datos/AgregarFromCategorias.php">Agregar Categoria</a>
+                <a href="../Insertar_Datos/AgregarFormCategorias.php" class="btn btn-success">Agregar Categoria</a>
 
     </div>
 
