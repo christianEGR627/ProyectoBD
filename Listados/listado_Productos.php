@@ -35,6 +35,7 @@
                                             ON Productos.ProveedorID = Proveedores.ProveedorID
                                             INNER JOIN Categorias
                                             ON Productos.CategoriaID = Categorias.CategoriaID
+                                            ORDER BY ProductoID ASC
                     "); 
 
                     if ($sql) { 
