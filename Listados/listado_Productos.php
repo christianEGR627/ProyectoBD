@@ -50,8 +50,9 @@
                                 <th scope="row"><?php echo $resultado['Unidad']?></th>
                                 <th scope="row"><?php echo '$' . $resultado['Precio']?></th>
                                 <th>
-                                    <a href="">Editar</a>
-                                    <a href="">Eliminar</a>
+                                    <a href="../Editar_Datos/EditarFormProductos.php?idProducto=<?php echo $resultado['ProductoID'] ?>"
+                                    class="btn btn-warning">Editar</a>
+                                    <a href="" class="btn btn-danger">Eliminar</a>
                                 </th>
                             </tr>
 
