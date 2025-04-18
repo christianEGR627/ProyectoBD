@@ -72,7 +72,7 @@
     </div>
 
     <div class="conteiner">
-        <a href="">Agregar Proveedor</a>
+        <a href="../Insertar_Datos/AgregarFormProveedores.php">Agregar Proveedor</a>
     </div>
 
 
