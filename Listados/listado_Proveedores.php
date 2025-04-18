@@ -47,7 +47,8 @@
                             <th scope="row"><?php echo $resultado['Pais'] ?></th>
                             <th scope="row"><?php echo $resultado['Telefono'] ?></th>
                             <th>
-                                <a href="">Editar</a>
+                            <a href="../Editar_Datos/EditarFormProveedores.php?idProveedor=<?php echo $resultado['ProveedorID'] ?>"
+                            class="btn btn-warning">Editar</a>
                                 <a href="">Eliminar</a>
                             </th>
                             
