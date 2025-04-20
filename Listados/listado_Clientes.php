@@ -48,7 +48,7 @@
                         <th scope="row"><?php echo $resultado['Pais'] ?></th>
                         <th>
                             <a href="../Editar_Datos/EditarFormClientes.php? ClienteID=<?php echo $resultado['ClienteID']?>" class="btn btn-warning">Editar</a>
-                            <a href="" class="btn btn-danger">Eliminar</a>
+                            <a href="../EliminarDatos/EliminarClientes.php? ClienteID=<?php echo $resultado['ClienteID']?>" class="btn btn-danger">Eliminar</a>
                         </th>
                     </tr>
                     <?php

@@ -44,7 +44,7 @@
                         <th scope="row"><?php echo $resultado['Telefono'] ?></th>
                         <th>
                         <a href="../Editar_Datos/EditarFormTransportistas.php? TransportistaID=<?php echo $resultado['TransportistaID']?>" class="btn btn-warning">Editar</a>
-                        <a href="" class="btn btn-danger">Eliminar</a>
+                        <a href="../EliminarDatos/EliminarTransportistas.php? TransportistaID=<?php echo $resultado['TransportistaID']?>" class="btn btn-danger">Eliminar</a>
                         </th>
 
 
