@@ -21,16 +21,18 @@
   <br>
   <h1 class="text-center" style="background: black; color:white"> EDITAR PEDIDOS</h1>
 
-  <form class="container">
+  <form class="container" action="EditarDatos(backend)/EditarDatosPedidos.php" method="post">
     <?php
     include_once('../Config/Conexion.php');
     $sql = "SELECT * FROM Pedidos WHERE PedidoID=" . $_REQUEST['PedidoID'];
     $resultado = $conexion->query($sql);
     $row = $resultado->fetch_assoc();
     ?>
+    <input type="Hidden" class="form-control" name="PedidoID" value="<?php echo $row['PedidoID']; ?>">
+
 
     <label for="">Nombre del Cliente</label>
-    <select class="form-select mb-3" aria-label="Default select example">
+    <select class="form-select mb-3" aria-label="Default select example" name="NombreCliente">
       <option selected disabled>--Seleccione un Cliente--</option>
       <?php
       include("../Config/Conexion.php");
@@ -48,17 +50,24 @@
     </select>
 
     <label for="">Nombre del Empleado</label>
-    <select class="form-select mb-3" aria-label="Default select example">
+    <select class="form-select mb-3" aria-label="Default select example" name="Nombre">
       <option selected disabled>--Seleccione un Empleado--</option>
       <?php
       include("../Config/Conexion.php");
-      $sql3="SELECT*FROM Empleados WHERE EmpleadoID=".$row['EmpleadoID'];
-      $resultado3=$conexion->query($sql3);
-      $row3=$resultado3->fetch_assoc();
-      echo "<option  selected value='" . $row3['EmpleadoID'] . "'>" . $row3['NombreEmpleado'] . "</option>";
-      
+
+      $sql3 = "SELECT * FROM Empleados WHERE EmpleadoID = " . $row['EmpleadoID'];
+      $resultado3 = $conexion->query($sql3);
+      $row3 = $resultado3->fetch_assoc();
+      echo "<option selected value='" . $row3['EmpleadoID'] . "'>" . $row3['Nombre'] . "</option>";
+
+      $sql4 = "SELECT * FROM Empleados";
+      $resultado4 = $conexion->query($sql4);
+      while ($fila4 = $resultado4->fetch_array()) {
+        echo "<option value='" . $fila4['EmpleadoID'] . "'>" . $fila4['Nombre'] . "</option>";
+      }
       ?>
     </select>
+
 
     <div class="mb-3">
       <label class="form-label">Fecha del Pedido</label>
@@ -66,10 +75,24 @@
     </div>
 
     <label for="">Nombre del Transportista</label>
-    <select class="form-select" aria-label="Default select example">
+    <select class="form-select mb-3" aria-label="Default select example" name="NombreTransportista">
       <option selected disabled>--Seleccione un Transportista--</option>
-      <option value="1">One</option>
+      <?php
+      include("../Config/Conexion.php");
+
+      $sqlTransportistaSel = "SELECT * FROM Transportistas WHERE TransportistaID = " . $row['TransportistaID'];
+      $resTransportistaSel = $conexion->query($sqlTransportistaSel);
+      $rowTransportistaSel = $resTransportistaSel->fetch_assoc();
+      echo "<option selected value='" . $rowTransportistaSel['TransportistaID'] . "'>" . $rowTransportistaSel['NombreTransportista'] . "</option>";
+
+      $sqlTransportistas = "SELECT * FROM Transportistas";
+      $resTransportistas = $conexion->query($sqlTransportistas);
+      while ($filaTransportista = $resTransportistas->fetch_assoc()) {
+        echo "<option value='" . $filaTransportista['TransportistaID'] . "'>" . $filaTransportista['NombreTransportista'] . "</option>";
+      }
+      ?>
     </select>
+
     <button type="submit" class="btn btn-primary">Enviar</button>
     <a href="../Listados/listado_Pedidos.php" class="btn btn-dark">Regresar</a>
 
