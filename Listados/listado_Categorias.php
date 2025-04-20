@@ -39,7 +39,8 @@
                             <th>
                             <a href="../Editar_Datos/EditarFormCategorias.php?idCategoria=<?php echo $resultado['CategoriaID'] ?>"
                             class="btn btn-warning">Editar</a>
-                                <a href="">Eliminar</a>
+                                <a href="../EliminarDatos/EliminarCategorias.php?idCategoria=<?php echo $resultado['CategoriaID'] ?>"
+                                class="btn btn-danger">Eliminar</a>
                             </th>
                         </tr>
 

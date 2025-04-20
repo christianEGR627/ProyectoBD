@@ -49,7 +49,8 @@
                             <th>
                             <a href="../Editar_Datos/EditarFormProveedores.php?idProveedor=<?php echo $resultado['ProveedorID'] ?>"
                             class="btn btn-warning">Editar</a>
-                                <a href="">Eliminar</a>
+                                <a href="../EliminarDatos/EliminarProveedores.php?idProveedor=<?php echo $resultado['ProveedorID'] ?>"
+                            class="btn btn-danger">Eliminar</a>
                             </th>
                             
                             
