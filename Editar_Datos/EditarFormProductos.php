@@ -7,20 +7,24 @@
     <title>Editar Productos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/estilos_tablas.css">
 </head>
 
 <body>
 
     <div class="container">
-        <h1 class="text-center" style="background-color: black; color: white; border-radius: 5px;">
-            Editar Productos</h1>
+        <h1 class="form-title text-center">Editar Producto</h1>
         <br>
     </div>
 
-    <form class="container" action="EditarDatos(backend)/EditarDatosProductos.php" method="post">
+    <form class="form-container" action="EditarDatos(backend)/EditarDatosProductos.php" method="post">
         <?php
         include_once('../Config/Conexion.php');
-        $sql = "SELECT * FROM  Productos WHERE ProductoID =" . $_REQUEST['idProducto'];
+        $sql = "SELECT * FROM Productos WHERE ProductoID =" . $_REQUEST['idProducto'];
         $resultado = $conexion->query($sql);
         $row = $resultado->fetch_assoc();
         ?>
@@ -28,79 +32,72 @@
         <input type="hidden" class="form-control" name="ID" value="<?php echo $row['ProductoID'] ?>">
 
         <div class="mb-3">
-            <label class="form-label">Nombre Producto</label>
-            <input type="text" class="form-control" name="NombreProducto" value="<?php echo $row['NombreProducto'] ?>">
-
+            <label for="nombreProducto" class="form-label">Nombre del Producto</label>
+            <input type="text" class="form-control" id="nombreProducto" name="NombreProducto" value="<?php echo $row['NombreProducto'] ?>">
         </div>
         <br>
 
-        <!--TRAER DATOS PROVEEDOR-->
-        <label>Proveedores</label>
-        <select class="form-select mb-3" aria-label="Default select example" name="Proveedor">
-            <option selected>--Seleccione Proveedor--</option>
-            <?php 
-            include("../Config/Conexion.php");
-            $sql1="SELECT * FROM Proveedores WHERE ProveedorID =" .$row['ProveedorID'];
-            $resultado1 = $conexion->query($sql1);
-            $row1 = $resultado1->fetch_assoc();
-            echo "<option selected value='" . $row1['ProveedorID'] . "'>" . $row1['NombreProveedor'] . "</option>";
-            
-            $sql2 = "SELECT * FROM Proveedores";
-            $resultado2 = $conexion->query($sql2);
-            while($Fila = $resultado2->fetch_assoc()){
-                echo "<option value='" . $Fila['ProveedorID'] . "'>" . $Fila['NombreProveedor'] . "</option>";
-            }
-            ?>
-        </select>
-
-
-
-
-        <!--TRAER DATOS CATEGORIA-->
-        <label>Categorias</label>
-        <select class="form-select mb-3" aria-label="Default select example" name="Categoria">
-            <option selected>--Seleccione Categoria--</option>
-            <?php 
-            include("../Config/Conexion.php");
-            $sql3="SELECT * FROM Categorias WHERE CategoriaID =" .$row['CategoriaID'];
-            $resultado3 = $conexion->query($sql3);
-            $row3 = $resultado3->fetch_assoc();
-            echo "<option selected value='" . $row3['CategoriaID'] . "'>" . $row3['NombreCategoria'] . "</option>";
-            
-            $sql4 = "SELECT * FROM Categorias";
-            $resultado4 = $conexion->query($sql4);
-            while($Fila = $resultado4->fetch_assoc()){
-                echo "<option value='" . $Fila['CategoriaID'] . "'>" . $Fila['NombreCategoria'] . "</option>";
-            }
-            ?>
-        </select>
-
-
         <div class="mb-3">
-            <label class="form-label">Unidad</label>
-            <input type="text" class="form-control" name="Unidad" value="<?php echo $row['Unidad'] ?>">
+            <label for="proveedor" class="form-label">Proveedor</label>
+            <select class="form-select" id="proveedor" aria-label="Seleccione un Proveedor" name="Proveedor">
+                <option selected disabled>--Seleccione Proveedor--</option>
+                <?php
+                include("../Config/Conexion.php");
+                $sqlProveedorSeleccionado = "SELECT * FROM Proveedores WHERE ProveedorID =" . $row['ProveedorID'];
+                $resultadoProveedorSeleccionado = $conexion->query($sqlProveedorSeleccionado);
+                $rowProveedorSeleccionado = $resultadoProveedorSeleccionado->fetch_assoc();
+                echo "<option selected value='" . $rowProveedorSeleccionado['ProveedorID'] . "'>" . $rowProveedorSeleccionado['NombreProveedor'] . "</option>";
 
+                $sqlProveedores = "SELECT * FROM Proveedores";
+                $resultadoProveedores = $conexion->query($sqlProveedores);
+                while ($filaProveedor = $resultadoProveedores->fetch_assoc()) {
+                    echo "<option value='" . $filaProveedor['ProveedorID'] . "'>" . $filaProveedor['NombreProveedor'] . "</option>";
+                }
+                ?>
+            </select>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Precio</label>
-            <input type="text" class="form-control" name="Precio" value="<?php echo $row['Precio'] ?>">
+            <label for="categoria" class="form-label">Categoría</label>
+            <select class="form-select" id="categoria" aria-label="Seleccione una Categoría" name="Categoria">
+                <option selected disabled>--Seleccione Categoría--</option>
+                <?php
+                include("../Config/Conexion.php");
+                $sqlCategoriaSeleccionada = "SELECT * FROM Categorias WHERE CategoriaID =" . $row['CategoriaID'];
+                $resultadoCategoriaSeleccionada = $conexion->query($sqlCategoriaSeleccionada);
+                $rowCategoriaSeleccionada = $resultadoCategoriaSeleccionada->fetch_assoc();
+                echo "<option selected value='" . $rowCategoriaSeleccionada['CategoriaID'] . "'>" . $rowCategoriaSeleccionada['NombreCategoria'] . "</option>";
+
+                $sqlCategorias = "SELECT * FROM Categorias";
+                $resultadoCategorias = $conexion->query($sqlCategorias);
+                while ($filaCategoria = $resultadoCategorias->fetch_assoc()) {
+                    echo "<option value='" . $filaCategoria['CategoriaID'] . "'>" . $filaCategoria['NombreCategoria'] . "</option>";
+                }
+                ?>
+            </select>
         </div>
 
-
-        <div class="text-center">
-            <button type="submit" class="btn btn-danger" >Agregar</button>
-            <a href="../Listados/listado_Productos.php" class="btn btn-dark">Regresar</a>
+        <div class="mb-3">
+            <label for="unidad" class="form-label">Unidad</label>
+            <input type="text" class="form-control" id="unidad" name="Unidad" value="<?php echo $row['Unidad'] ?>">
         </div>
 
+        <div class="mb-3">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="text" class="form-control" id="precio" name="Precio" value="<?php echo $row['Precio'] ?>">
+        </div>
+
+        <div class="form-actions text-center">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-save icon"></i> Guardar Cambios</button>
+            <a href="../Listados/listado_Productos.php" class="btn btn-secondary"><i class="fas fa-arrow-left icon"></i> Regresar</a>
+        </div>
 
     </form>
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </body>
 
 </html>

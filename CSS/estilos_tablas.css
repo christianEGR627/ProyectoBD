@@ -1,0 +1,152 @@
+body {
+    background-color: #0f172a; /* Un azul oscuro moderno */
+    color: #e0f2fe; /* Azul claro para el texto */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.page-title {
+    color: #67e8f9; /* Cian brillante para el título */
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.add-button-container {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.add-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: #10b981; /* Verde esmeralda */
+    color: #f0fdf4; /* Blanco hueso */
+    border: none;
+    border-radius: 6px;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+    background-color: #34d399; /* Verde esmeralda más claro */
+}
+
+.add-button .icon {
+    margin-right: 8px;
+}
+
+.table-wrapper {
+    background-color: #1e293b; /* Gris azulado oscuro para el contenedor de la tabla */
+    border-radius: 8px;
+    overflow: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.display {
+    width: 100%;
+    border-collapse: collapse;
+    color: #cbd5e1; /* Color claro azulado para el texto de la tabla (general) */
+}
+
+.display th,
+.display tbody td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #334155; /* Líneas divisorias horizontales oscuras */
+    color: #000 !important; /* Texto en color negro para los datos */
+}
+
+.display th {
+    background-color: #334155; /* Gris azulado más oscuro para el encabezado */
+    color: #67e8f9; /* Cian brillante para el texto del encabezado */
+    font-weight: bold;
+}
+
+/* ... el resto de tu CSS (para .container, .page-title, etc.) ... */
+
+.display tbody tr:hover {
+    background-color: #2c3e50; /* Oscurecer la fila al pasar el ratón */
+}
+
+.btn-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+}
+
+.btn-action {
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.btn-action:hover {
+    opacity: 0.8;
+}
+
+.btn-edit {
+    background-color: #facc15; /* Amarillo dorado */
+    color: #1e293b;
+}
+
+.btn-delete {
+    background-color: #ef4444; /* Rojo */
+    color: #f0fdf4;
+}
+
+/* Estilos para DataTables */
+.dataTables_wrapper .dataTables_filter input {
+    background-color: #334155;
+    color: #cbd5e1;
+    border: 1px solid #475569;
+    border-radius: 4px;
+    padding: 6px;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    background-color: #334155;
+    color: #cbd5e1;
+    border: 1px solid #475569;
+    border-radius: 4px;
+    padding: 6px;
+}
+
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: #cbd5e1 !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: #475569 !important;
+    border-color: #64748b !important;
+}
+
+
+
+.dataTables_wrapper .dataTables_length label,
+.dataTables_wrapper .dataTables_filter label,
+.dataTables_wrapper .dataTables_info {
+    color: #fff; /* Color blanco para "Mostrar", "entradas" e información */
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    color: #fff; /* Color blanco para el texto dentro del campo de búsqueda */
+    border: 1px solid #475569; /* Mantenemos el borde */
+    background-color: #334155; /* Mantenemos el fondo */
+}

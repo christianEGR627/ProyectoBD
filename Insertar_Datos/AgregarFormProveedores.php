@@ -4,62 +4,66 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ingresar Proveedores</title>
+    <title>Agregar Proveedores</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/estilos_tablas.css">
 </head>
 
 <body>
+
     <div class="container">
-        <h1>Agregar Proveedor</h1>
+        <h1 class="form-title text-center">Agregar Proveedor</h1>
+        <br>
     </div>
 
-    <div class="container">
-
+    <div class="form-container">
         <form action="InsertarDatos(backend)/InsertarDatosProveedores.php" method="post">
             <div class="mb-3">
-                <label class="form-label">Nombre del Proveedor</label>
-                <input type="text" class="form-control" name="NombreProveedor">
+                <label for="nombreProveedor" class="form-label">Nombre del Proveedor</label>
+                <input type="text" class="form-control" id="nombreProveedor" name="NombreProveedor">
             </div>
             <div class="mb-3">
-                <label class="form-label">Nombre del contacto</label>
-                <input type="text" class="form-control" name="NombreContacto">
+                <label for="nombreContacto" class="form-label">Nombre del Contacto</label>
+                <input type="text" class="form-control" id="nombreContacto" name="NombreContacto">
             </div>
             <div class="mb-3">
-                <label class="form-label">Direccion</label>
-                <input type="text" class="form-control" name="Direccion">
+                <label for="direccion" class="form-label">Dirección</label>
+                <input type="text" class="form-control" id="direccion" name="Direccion">
             </div>
             <div class="mb-3">
-                <label class="form-label">Ciudad</label>
-                <input type="text" class="form-control" name="Ciudad">
+                <label for="ciudad" class="form-label">Ciudad</label>
+                <input type="text" class="form-control" id="ciudad" name="Ciudad">
             </div>
             <div class="mb-3">
-                <label class="form-label">Codigo Postal</label>
-                <input type="text" class="form-control" name="CodigoPostal">
+                <label for="codigoPostal" class="form-label">Código Postal</label>
+                <input type="text" class="form-control" id="codigoPostal" name="CodigoPostal">
             </div>
             <div class="mb-3">
-                <label class="form-label">Pais</label>
-                <input type="text" class="form-control" name="Pais">
+                <label for="pais" class="form-label">País</label>
+                <input type="text" class="form-control" id="pais" name="Pais">
             </div>
             <div class="mb-3">
-                <label class="form-label">Telefono</label>
-                <input type="text" class="form-control" name="Telefono">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="text" class="form-control" id="telefono" name="Telefono">
             </div>
 
-            <div class="container">
-        <button type="submit" class="btn btn-danger">Enviar</button>
-        <a href="../Listados/listado_Proveedores.php" class="btn btn-dark">Regresar</a>
-    </div>
+            <div class="form-actions text-center">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-plus icon"></i> Agregar Proveedor</button>
+                <a href="../Listados/listado_Proveedores.php" class="btn btn-secondary"><i class="fas fa-arrow-left icon"></i> Regresar</a>
+            </div>
 
         </form>
-
     </div>
-    
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </body>
 
 </html>
