@@ -149,58 +149,8 @@ La sección de scripts al final del <`body`> incluye archivos JavaScript externo
 
 
 
-```html
-```
 
 ```html
 ```
-
-```html
-```
-
-```html
-```
-
-```html
-```
-
-```html
-```
-
-```html
-```
-
-```html
-```
-
-```html
-```
-
-```html
-```
-
-```html
-```
-
-```html
-```
-
-```html
-```
-
-```html
-```
-
-``
-
-``
-
-``
-
-``
-
-``
-
-``
 
 ``

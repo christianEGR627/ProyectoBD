@@ -97,10 +97,10 @@
             </div>
             <div class="module-card">
                 <i class="fas fa-cubes module-icon"></i>
-                <h3 class="module-title">Inventario</h3>
-                <p class="module-description">Controla el stock de tus productos y recibe alertas de inventario bajo.
+                <h3 class="module-title">Documentacion Del Proyecto</h3>
+                <p class="module-description">Ve la Documentacion del proyecto directamente desde GitHub:
                 </p>
-                <a href="#" class="module-link">
+                <a href="https://www.google.com/" class="module-link">
                     Ver Detalles <i class="fas fa-arrow-right arrow-icon"></i>
                 </a>
             </div>

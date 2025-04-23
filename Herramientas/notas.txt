@@ -14,3 +14,7 @@ Para compartir nuevamente tu localhost con ngrok haz lo siguiente:
  5) ngrok generará una nueva URL pública. Esta URL será diferente a la que obtuviste hoy. 
     Busca nuevamente las líneas que empiezan con "Forwarding" en la salida de la terminal.
 
+para seguir haciendo la documentacion 
+preciona ctrl + shift + p 
+   Markdown: Open Preview 
+   
