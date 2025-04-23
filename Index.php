@@ -106,9 +106,9 @@
             </div>
             <div class="module-card">
                 <i class="fas fa-sliders-h module-icon"></i>
-                <h3 class="module-title">Configuración</h3>
-                <p class="module-description">Personaliza la configuración de tu sistema y gestiona usuarios.</p>
-                <a href="#" class="module-link">
+                <h3 class="module-title">Ver Diagrama E-R</h3>
+                <p class="module-description">Ve el diagrama E-R de la Base de Datos</p>
+                <a href="Herramientas/ModeloE-R.png" class="module-link">
                     Ver Detalles <i class="fas fa-arrow-right arrow-icon"></i>
                 </a>
             </div>
