@@ -1,8 +1,10 @@
-# Código HTML de la Página Principal
+# Documentacion del Proyecto
+
+## Código HTML de la Página Principal
 
 Este documento describe la estructura y el propósito del código HTML para la página principal de la aplicación "Viento del Norte".
 
-# Metadatos del Documento (`<head>`)
+### Metadatos del Documento (`<head>`)
 
 La sección `<head>` contiene información sobre el documento HTML...
 
@@ -42,7 +44,7 @@ Enlaza la biblioteca de iconos Font Awesome para utilizar iconos en la página.
 ```
 Enlaza una hoja de estilos personalizada (estilos_principal.css) para aplicar estilos específicos de esta página.
 
-# Contenido del Cuerpo (`<body>`)
+### Contenido del Cuerpo (`<body>`)
 La sección <`body`> contiene el contenido visible de la página principal...
 
 ```html
@@ -72,7 +74,7 @@ La sección <`body`> contiene el contenido visible de la página principal...
 
 <`h1 class="text-center text-white mb-4">Viento del Norte</h1`> Un encabezado de nivel 1 que muestra el título de la aplicación, centrado, con texto blanco y un margen inferior.
 
-# Módulos de la Aplicación (`<div class="module-grid">`)
+### Módulos de la Aplicación (`<div class="module-grid">`)
 Este div contiene los diferentes módulos o secciones principales de la aplicación...
 
 
@@ -116,7 +118,7 @@ Cada tarjeta de módulo (.module-card) sigue una estructura similar...
 
 `<a href="Listados/listado_Productos.php" class="module-link">Ver Detalles <i class="fas fa-arrow-right arrow-icon"></i></a>` Un enlace a la página de listado o gestión del módulo
 
-## Los módulos incluidos son:
+### Los módulos incluidos son:
 
 * Productos: Enlace a Listados/listado_Productos.php.
 * Proveedores: Enlace a Listados/listado_Proveedores.php.
@@ -130,7 +132,7 @@ Cada tarjeta de módulo (.module-card) sigue una estructura similar...
 * Inventario: Enlace a #.
 * Configuración: Enlace a #.
 
-# Scripts (`<script>`)
+### Scripts (`<script>`)
 La sección de scripts al final del <`body`> incluye archivos JavaScript externos.
 
 
